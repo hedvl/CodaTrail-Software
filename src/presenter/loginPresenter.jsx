@@ -12,7 +12,7 @@
 import { defineComponent, reactive, onMounted } from "vue";
 import { LoginView } from "../view/loginView.jsx";
 import { useRouter } from "vue-router";
-import { UserModel } from "../Model/UserModel.js";
+import { UserModel } from "../model/UserModel.js";
 
 const authState = reactive({
   email: "",
