@@ -1,4 +1,4 @@
-import { onAuthStateChanged, sendPasswordResetEmail } from 'firebase/auth';
+import { onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from "./firebase.js";
 
 // Formatterar Firebase user till ett enklare objekt
@@ -17,13 +17,55 @@ export const initAuthListener = (onChange, onError) =>
   onAuthStateChanged(
     auth,
     (fbUser) => onChange(formatUser(fbUser)),
-    onError
-    //sätt isLoggedin = true; för conditional rendering
+    (error) => {
+      if (onError) onError(error);
+    }
   );
 
-// signOut(auth).then(...).catch(...)
+
+  // Log in with mail
+
+export const signInWithEmail = (email,password) =>
+  signInWithEmailAndPassword(auth, email, password)
+    .then((result) => ({
+      user: formatUser(result.user)
+    }))
+    .catch((error) => ({
+      error,
+      errorCode: error.code,
+      errorMessage: error.message
+    }));
+
+// create account with mail
+export const signUpWithEmail = (email,password) =>
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((result) => ({
+      user: formatUser(result.user)
+    }))
+    .catch((error) => ({
+      error,
+      errorCode: error.code,
+      errorMessage: error.message
+    }));
+
+// log in with Google
+export const signInWithGoogle = () => {
+  const provider = new GoogleAuthProvider();
+  return signInWithPopup(auth, provider)
+    .then((result) => ({
+      user: formatUser(result.user)
+    }))
+    .catch((error) => ({
+      error,
+      errorCode: error.code,
+      errorMessage: error.message
+    }));
+}
+  
+
+// log out
 export const signOutUser = () =>
-  auth.signOut()
+  signOut(auth)
     .then(() => ({ user: null }))
     .catch((error) => ({
       error,
@@ -31,6 +73,7 @@ export const signOutUser = () =>
       errorMessage: error.message,
     }));
 
+// send reset mail
 export const sendPasswordReset = (email) =>
   sendPasswordResetEmail(auth, email)
     .then(() => ({ success: true }))

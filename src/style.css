@@ -1,0 +1,137 @@
+/* hela bakgrunden */
+.auth-wrap {
+  min-height: 100vh;
+  background-color: #0f1117;
+  color: #f0ede8;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* grid bakgrund */
+.auth-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+}
+
+/* login card */
+.auth-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 500px;
+  padding: 40px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+
+/* titel */
+.auth-title {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.auth-title span {
+  color: #f5c842;
+  font-style: italic;
+}
+
+/* text under titel */
+.auth-subtitle {
+  text-align: center;
+  color: rgba(240,237,232,0.6);
+  margin-bottom: 25px;
+}
+
+/* inputs */
+.input-group {
+  margin-bottom: 16px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px;
+  color: white;
+}
+
+/* error input */
+.input-error {
+  border: 1px solid #ff6b6b;
+}
+
+/* error text */
+.field-error {
+  font-size: 12px;
+  color: #ff6b6b;
+}
+
+/* buttons */
+.auth-button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+}
+
+/* main button */
+.auth-button.primary {
+  background: #f5c842;
+  color: #0f1117;
+  border: none;
+  font-weight: bold;
+}
+
+/* secondary buttons */
+.auth-button:not(.primary) {
+  background: rgba(255,255,255,0.05);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* links */
+.auth-links {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.link {
+  color: #f5c842;
+  text-decoration: none;
+}
+
+/* messages */
+.error-message {
+  background: rgba(255,0,0,0.2);
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.success-message {
+  background: rgba(245,200,66,0.2);
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}

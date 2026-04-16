@@ -8,6 +8,8 @@ export const HomepageView = defineComponent({
     onChooseLevel: Function,
     onProfile: Function,
     onLeaderboard: Function,
+    onSignOut: Function,
+    user: Object
   },
 
   setup(props) {
@@ -19,6 +21,12 @@ export const HomepageView = defineComponent({
           <div style={styles.logo}>
             <span style={styles.logoIcon}>⬡</span>
             <span style={styles.logoText}>CodaTrail</span>
+          </div>
+
+          <div style={styles.headerButtons}>
+            <button style={styles.profileBtn} onClick={props.onSignOut}>
+              Log Out
+            </button>
           </div>
           <button style={styles.profileBtn} onClick={props.onProfile}>
             Profile
@@ -32,6 +40,12 @@ export const HomepageView = defineComponent({
               Build your<br />
               <span style={styles.titleAccent}>sequence.</span>
             </h1>
+
+            {props.user && (
+              <p style={{ ...styles.subtitle, color: "#f5c842" }}>
+                Logged in as: {props.user.email}
+              </p>
+            )}
             <p style={styles.subtitle}>
               Place tiles, solve puzzles, and guide your character to the goal.
             </p>
@@ -95,6 +109,12 @@ const styles = {
     position: "relative",
     zIndex: 1,
   },
+
+  headerButtons: {
+    display: "flex",
+    gap: "12px",
+  },
+  
   logo: {
     display: "flex",
     alignItems: "center",

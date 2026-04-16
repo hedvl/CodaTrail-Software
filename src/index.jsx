@@ -1,8 +1,12 @@
-// TODO make a reactive model (application state), pass it as prop to the components used by App
 import { createApp } from "vue";
-import { HomepagePresenter } from "./presenter/homepagePresenter.jsx";
+import { RouterView } from "vue-router";
+import { router } from "./router.js";
+import "./style.css";
 
-const app = createApp(HomepagePresenter);
-app.mount("#root");
+const App = {
+    render() {
+        return <RouterView />;
+    }
+};
 
-//comment
+createApp(App).use(router).mount("#root");
