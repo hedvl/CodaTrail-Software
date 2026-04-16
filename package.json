@@ -1,0 +1,18 @@
+{
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "serve": "vite preview"
+    },
+    "devDependencies": {
+        "vite": "latest",
+        "@vitejs/plugin-vue-jsx": "latest",
+        "@vitejs/plugin-vue": "latest"
+    },
+    "dependencies": {
+        "firebase": "latest",
+        "vue-router": "latest",
+        "vue": "latest"
+    }
+}
